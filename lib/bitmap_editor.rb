@@ -1,3 +1,5 @@
+require_relative './commands'
+
 class BitmapEditor
   attr_accessor :instructions
 
@@ -5,13 +7,7 @@ class BitmapEditor
     return puts "please provide correct file" if file.nil? || !File.exists?(file)
 
     self.instructions = open_file(file)
-
-    if validate
-      self.instructions = instructions
-      execute
-    else
-      display_errors
-    end
+    execute
   end
 
   private
@@ -20,12 +16,10 @@ class BitmapEditor
   end
 
   def open_file(filename)
-    File.open(filename)
-  end
-
-  def validate
-  end
-
-  def display_errors
+    File.open(filename).to_a.map.with_index do |string|
+      array   = string.split(' ')
+      command = array.first
+      COMMANDS[command].new(array)
+    end
   end
 end
