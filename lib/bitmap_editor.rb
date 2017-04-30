@@ -1,7 +1,7 @@
 require_relative './commands'
 
 class BitmapEditor
-  attr_accessor :instructions
+  attr_accessor :instructions, :image
 
   def run(file)
     return puts "please provide correct file" if file.nil? || !File.exists?(file)
@@ -13,6 +13,7 @@ class BitmapEditor
   private
 
   def execute
+    instructions.each { |instruction| instruction.execute(self) }
   end
 
   def open_file(filename)

@@ -1,5 +1,5 @@
 require 'pry'
-Dir[File.expand_path('./lib/') + '/**/**.rb'].each { |filename| puts(filename);require(filename) }
+Dir[File.expand_path('./lib/') + '/**/**.rb'].each { |filename| require(filename) }
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
