@@ -7,5 +7,9 @@ class ColourInstruction < AbstractInstruction
       y: array[1].to_i,
       c: array.last
     }
+  end
+
+  def execute(editor)
+    editor.image[params[:x], params[:y]] = params[:c]
   end  
 end

@@ -11,4 +11,18 @@ RSpec.describe ColourInstruction do
       expect(subject.params).to eq({ x: 1, y: 3, c: 'A' })
     end
   end
+
+  describe '#execute' do
+    let(:editor) { BitmapEditor.new }
+    let!(:image)  do
+      Image.new(10,10).tap do |record|
+        editor.image = record
+      end
+    end
+
+    it 'paints the image for the given coordinates' do
+      subject.execute(editor)
+      expect(image[1,3]).to eq('A')
+    end
+  end
 end
