@@ -27,6 +27,10 @@ class Image
     @rows ||= matrix.send(:rows)
   end
 
+  def to_s
+    rows.map { |x| x.join('') }.join("\n")
+  end
+
   def columns
     matrix.transpose.send(:rows)
   end
