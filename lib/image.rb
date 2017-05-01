@@ -7,7 +7,8 @@ class Image
 
   def initialize(x,y)
     raise ArgumentError.new('X or Y must be 250 or less') if (x >= MAX_SIZE) || (y >= MAX_SIZE)
-    @matrix = Matrix.build(x,y) { WHITE }
+    # TODO: let the min value to be 1,1
+    @matrix = Matrix.build(x - 1, y - 1) { WHITE }
   end
 
   def [](x,y)
