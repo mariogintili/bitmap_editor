@@ -23,12 +23,12 @@ class VerticalInstruction < AbstractInstruction
   end
 
   def execute(editor)
-    stroke(editor: editor)
+    stroke(editor: editor, x: params[:x], y1: params[:y1], y2: params[:y2], c: params[:c])
   end
 
-  def stroke(editor:, x: params[:x] - 1, y1: params[:y1] - 1, y2: params[:y2], colour: params[:c])
-    return editor if y1 > y2
-    editor.image[y1, x] = colour
-    stroke(editor: editor, x: x, y1: y1 + 1, y2: y2, colour: colour)
+  def stroke(editor:, x:, y1:, y2:, c:)
+    (y1..y2).each do |y|
+      editor.image[y - 1, x - 1] = c
+    end
   end
 end

@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require './lib/bitmap_editor'
+Dir[File.expand_path('./lib/') + '/**/**.rb'].each { |filename| require(filename) }
 
 BitmapEditor.new.run ARGV.first

@@ -23,12 +23,12 @@ class HorizontalInstruction < AbstractInstruction
   end
 
   def execute(editor)
-    stroke(editor: editor)
+    stroke(editor: editor, x1: params[:x1], x2: params[:x2], y: params[:y], c: params[:c])
   end
 
-  def stroke(editor:, x1: params[:x1] - 1, x2: params[:x2] - 1, row_index: params[:y] - 1, colour: params[:c])
-    return editor if x1 > x2
-    editor.image[row_index, x1] = colour
-    stroke(editor: editor, x1: x1 + 1, x2: x2, row_index: row_index, colour: colour)
+  def stroke(editor:, x1:, x2:, y:, c:)
+    (x1..x2).each do |x|
+      editor.image[y - 1, x - 1] = c
+    end
   end
 end

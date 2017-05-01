@@ -1,7 +1,6 @@
-require 'matrix'
 
 class Image
-  attr_reader :matrix
+  attr_reader :rows, :x, :y
   WHITE     = 'O'
   MAX_SIZE  = 250
   MIN_SIZE  = 1
@@ -9,10 +8,9 @@ class Image
   def initialize(x,y)
     raise ArgumentError.new('X or Y must be 250 or less') if (x >= MAX_SIZE) || (y >= MAX_SIZE)
     raise ArgumentError.new('Minimum coordinates must be >= 1') if (MIN_SIZE > x) || (MIN_SIZE > y)
-    @matrix = Matrix.build(
-      1 >= (x - 1) ? 1 : x,
-      1 >= (y - 1) ? 1 : y
-    ) { WHITE }
+    @rows = Array.new(y) { Array.new(x, WHITE)  }
+    @x    = x
+    @y    = y
   end
 
   def [](x,y)
@@ -23,15 +21,7 @@ class Image
     rows[x][y] = value
   end
 
-  def rows
-    @rows ||= matrix.send(:rows)
-  end
-
   def to_s
     rows.map { |x| x.join('') }.join("\n")
-  end
-
-  def columns
-    matrix.transpose.send(:rows)
   end
 end

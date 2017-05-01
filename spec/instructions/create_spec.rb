@@ -17,8 +17,8 @@ RSpec.describe CreateInstruction do
 
     it 'assigns an image to the editor for the given coordinates' do
       subject.execute(editor)
-      expect(editor.image.rows.count).to eq(5)
-      expect(editor.image.columns.count).to eq(6)
+      expect(editor.image.rows.count).to eq(6)
+      expect(editor.image.rows[0].count).to eq(5)
     end 
   end
 end

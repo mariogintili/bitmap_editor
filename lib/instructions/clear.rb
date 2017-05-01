@@ -6,6 +6,6 @@ class ClearInstruction < AbstractInstruction
   end
 
   def execute(editor)
-    editor.image = Image.new(editor.image.rows.count, editor.image.columns.count)
+    editor.image  = Image.new(editor.image.x, editor.image.y)
   end
 end

@@ -13,7 +13,9 @@ class BitmapEditor
   private
 
   def execute
-    instructions.each { |instruction| instruction.execute(self) }
+    instructions.each do |instruction|
+      instruction.execute(self)
+    end
   end
 
   def open_file(filename)
