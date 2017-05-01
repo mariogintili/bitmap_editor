@@ -7,4 +7,8 @@ class CreateInstruction < AbstractInstruction
       y: array.last.to_i
     }
   end
+
+  def execute(editor)
+    editor.image = Image.new(params[:x], params[:y])
+  end
 end

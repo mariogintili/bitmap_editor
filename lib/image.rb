@@ -21,4 +21,8 @@ class Image
   def rows
     matrix.send(:rows)
   end
+
+  def columns
+    matrix.transpose.send(:rows)
+  end
 end
