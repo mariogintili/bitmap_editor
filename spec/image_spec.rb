@@ -4,6 +4,7 @@ RSpec.describe Image do
   describe '::new' do
     context 'with values that are less than 250x250' do
       subject { described_class.new(1,1) }
+
       it 'initializes a matrix for the given values, where all the cells have the default white(O)' do 
         expect(subject[0,0]).to eq('O')
       end

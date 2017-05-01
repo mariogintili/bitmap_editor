@@ -10,6 +10,6 @@ class ColourInstruction < AbstractInstruction
   end
 
   def execute(editor)
-    editor.image[params[:x], params[:y]] = params[:c]
+    editor.image[params[:y] - 1, params[:x] - 1] = params[:c]
   end  
 end
